@@ -1,7 +1,6 @@
 # Kreuzschulung: wen anlernen? – Streamlit-Demo
 
-<!-- TODO nach dem Deploy: direkt hierher den Live-Link setzen (Leerzeile davor und danach):
-**[→ Demo live ausprobieren](https://sebastianhanisch-kreuzschulung-demo.streamlit.app/)** -->
+**[→ Demo live ausprobieren](https://sebastianhanisch-kreuzschulung-demo.streamlit.app/)**
 
 Fall-Demo für die Website „Sebastian Hanisch – Operations Research und Machine Learning“ (Gruppe Personaleinsatzplanung, Themenseite Schichtplanung). Vehikel: ein Lager
 mit Zonen (Wareneingang, Kommissionierung, Verpackung, Versand und weitere), je Zone eine Gruppe mit der Hauptqualifikation. Der Tagesbedarf je Zone ist zufällig; wer einer
