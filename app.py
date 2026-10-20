@@ -83,6 +83,17 @@ Das Ergebnis ist Lehrbuchwissen (Prozessflexibilität, „lange Kette“): Die D
 sind erfunden: Beispielwerte, keine Prognose für Ihren Betrieb. Der Preis der Schulung ist nicht modelliert.
 """
 )
+
+# erklaerseite:einfach:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/kreuzschulung-erklaert.json, nicht von Hand ändern)
+with st.expander("💬 In einfachen Worten"):
+    st.markdown(
+        """
+Ein Lager hat mehrere **Stationen**, und zu jeder gehört eine Gruppe mit ihrer Hauptqualifikation. Der Tagesbedarf je Station ist zufällig: Mal ist an einer Station zu viel zu tun, während eine andere Gruppe Leerlauf hat. Bringt man Gruppen eine Zusatzstation bei, können sie sich gegenseitig aushelfen. Die Demo fragt, wie viel vom Nutzen voller Flexibilität man mit wenigen Zusatzqualifikationen holt und warum dabei die **Anordnung** zählt: Verbindet man die Stationen zu einem geschlossenen Ring, hilft das weit mehr als dieselbe Zahl Qualifikationen als Paare. Sie zeigt auch, wann selbst der Ring nicht reicht und wie viele Mitarbeitende überhaupt lernen müssen. Alle Parameter sind erfunden, der Preis der Schulung ist nicht modelliert.
+
+[Ausführlich und verständlich erklärt, mit Fachteil](https://sebastianhanisch.net/kreuzschulung-erklaert.html)
+        """
+    )
+# erklaerseite:einfach:end
 st.caption(
     "Die Lücke, die die [Schichtplanung](https://sebastianhanisch-shift-demo.streamlit.app/) („keine Qualifikationen“) lässt: Wer lernt welche Zusatzstation? "
     "Pooling als Grenzfall kennt die [M/M/c-Warteschlange](https://sebastianhanisch-mmc-queue-demo.streamlit.app/) (alle zusammen oder getrennt); "
@@ -489,6 +500,29 @@ ein LP je Szenario mit 800 Szenarien wie die Messreihe). Vorgerechnet: die Messr
     )
 
 with st.expander("📐 Mathematische Formulierung"):
+    # erklaerseite:lesehilfe:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/kreuzschulung-erklaert.json, nicht von Hand ändern)
+    st.markdown(
+        r"""
+**Lesehilfe.** Gegeben sind die Stationen mit zufälligem Bedarf $D_i$, die Gruppen mit Kapazität $S_j$ und ihren Qualifikationen $Q_j$. Gesucht ist, wie viel Bedarf bedient wird und welchen Anteil am Nutzen voller Flexibilität ein Entwurf holt.
+
+| Symbol | Bedeutung |
+|---|---|
+| $i$, $j$ | Station und Gruppe (Gruppe $j$ gehört zur Station $j$) |
+| $n$ | Zahl der Stationen |
+| $D_i$ | Bedarf der Station $i$ an einem Tag |
+| $S_j$ | Kapazität der Gruppe $j$ |
+| $Q_j$ | Menge der Stationen, für die Gruppe $j$ qualifiziert ist |
+| $T$ | Teilmenge der Stationen (beim Min-Schnitt) |
+| $\mathrm{bedient}(D)$ | größte Menge Bedarf, die bei gegebenem Bedarf bedient werden kann |
+| $SG(E)$ | Servicegrad des Entwurfs $E$ (bedient geteilt durch Bedarf) |
+| $D_0$, $F$ | Bezugspunkte: keine Zusatzqualifikation, volle Flexibilität |
+| $\bar a$, $\bar b$ | mittlerer Gewinn an bedientem Bedarf: Entwurf gegenüber $D_0$ und $F$ gegenüber $D_0$ |
+| $\mathbb{E}$ | Erwartungswert über die Szenarien |
+
+[Schritt für Schritt erklärt, mit Herleitung und Literatur](https://sebastianhanisch.net/kreuzschulung-erklaert.html#fachleute)
+        """
+    )
+    # erklaerseite:lesehilfe:end
     st.markdown("**Bedienung** (Gruppe j mit Kapazität $S_j$, Station i mit Bedarf $D_i$, Qualifikationsmenge $Q_j$):")
     st.markdown(r"""
 $$\mathrm{bedient}(D) = \max \sum_{j,i} x_{ji} \quad \text{unter} \quad \sum_i x_{ji} \le S_j,\ \ \sum_j x_{ji} \le D_i,\ \ x_{ji} = 0 \text{ für } i \notin Q_j$$
